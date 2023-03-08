@@ -18,6 +18,9 @@
 		B477B26C29B0ACF100CC4CF5 /* ExploreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B477B26B29B0ACF100CC4CF5 /* ExploreController.swift */; };
 		B477B26E29B0AD1D00CC4CF5 /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B477B26D29B0AD1D00CC4CF5 /* NotificationsController.swift */; };
 		B477B27029B0AD3A00CC4CF5 /* ConversationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B477B26F29B0AD3A00CC4CF5 /* ConversationsController.swift */; };
+		B477B27329B8841200CC4CF5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B477B27229B8841200CC4CF5 /* SnapKit */; };
+		B477B27529B885EA00CC4CF5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B477B27429B885EA00CC4CF5 /* Extensions.swift */; };
+		B477B27829B890BE00CC4CF5 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B477B27729B890BE00CC4CF5 /* LoginController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,8 @@
 		B477B26B29B0ACF100CC4CF5 /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
 		B477B26D29B0AD1D00CC4CF5 /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
 		B477B26F29B0AD3A00CC4CF5 /* ConversationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsController.swift; sourceTree = "<group>"; };
+		B477B27429B885EA00CC4CF5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B477B27729B890BE00CC4CF5 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B477B27329B8841200CC4CF5 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +99,7 @@
 		B477B26029B0AA1700CC4CF5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B477B27629B8904E00CC4CF5 /* Authentication */,
 				B477B26529B0AAFB00CC4CF5 /* MainTabController.swift */,
 				B477B26929B0ACAE00CC4CF5 /* FeedController.swift */,
 				B477B26B29B0ACF100CC4CF5 /* ExploreController.swift */,
@@ -126,8 +133,17 @@
 		B477B26429B0AA4100CC4CF5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B477B27429B885EA00CC4CF5 /* Extensions.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		B477B27629B8904E00CC4CF5 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				B477B27729B890BE00CC4CF5 /* LoginController.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +162,9 @@
 			dependencies = (
 			);
 			name = TwitterClone;
+			packageProductDependencies = (
+				B477B27229B8841200CC4CF5 /* SnapKit */,
+			);
 			productName = TwitterClone;
 			productReference = B477B24629B0A9D200CC4CF5 /* TwitterClone.app */;
 			productType = "com.apple.product-type.application";
@@ -174,6 +193,9 @@
 				Base,
 			);
 			mainGroup = B477B23D29B0A9D200CC4CF5;
+			packageReferences = (
+				B477B27129B8841200CC4CF5 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = B477B24729B0A9D200CC4CF5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -202,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B477B24E29B0A9D200CC4CF5 /* ViewController.swift in Sources */,
+				B477B27529B885EA00CC4CF5 /* Extensions.swift in Sources */,
 				B477B24A29B0A9D200CC4CF5 /* AppDelegate.swift in Sources */,
 				B477B27029B0AD3A00CC4CF5 /* ConversationsController.swift in Sources */,
 				B477B26A29B0ACAE00CC4CF5 /* FeedController.swift in Sources */,
@@ -209,6 +232,7 @@
 				B477B26E29B0AD1D00CC4CF5 /* NotificationsController.swift in Sources */,
 				B477B24C29B0A9D200CC4CF5 /* SceneDelegate.swift in Sources */,
 				B477B26C29B0ACF100CC4CF5 /* ExploreController.swift in Sources */,
+				B477B27829B890BE00CC4CF5 /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +462,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B477B27129B8841200CC4CF5 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B477B27229B8841200CC4CF5 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B477B27129B8841200CC4CF5 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B477B23E29B0A9D200CC4CF5 /* Project object */;
 }
