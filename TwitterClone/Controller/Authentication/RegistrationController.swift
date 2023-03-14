@@ -6,18 +6,19 @@
 //
 
 import UIKit
-
+import Firebase
 class RegistrationController: UIViewController{
     
     // MARK: - Properties
     
     private let imagePicker = UIImagePickerController()
+    private var profileImage: UIImage?
     
     private let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "plus_photo"), for: .normal)
         button.tintColor = .white
-        button.addTarget(self, action: #selector(handleAddProfilePhoto), for: .touchUpInside)
+        button.addTarget(nil, action: #selector(handleAddProfilePhoto), for: .touchUpInside)
         return button
     }()
     
@@ -43,19 +44,21 @@ class RegistrationController: UIViewController{
     
     private let emailTextField: UITextField = {
         let tf = Utilities().textField(withPlaceHolder: "Email")
-
+        tf.keyboardType = .emailAddress
+        tf.autocorrectionType = .no
         return tf
     }()
     
     private let passwordTextField: UITextField = {
         let tf = Utilities().textField(withPlaceHolder: "Password")
         tf.isSecureTextEntry = true
+        tf.passwordRules = .none
         return tf
     }()
     
     private let fullNameTextField: UITextField = {
         let tf = Utilities().textField(withPlaceHolder: "Full Name")
-
+        
         return tf
     }()
     
@@ -74,14 +77,14 @@ class RegistrationController: UIViewController{
         }
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        button.addTarget(self, action: #selector(handleRegister), for: .touchUpInside)
+        button.addTarget(nil, action: #selector(handleRegister), for: .touchUpInside)
         return button
     }()
     
     
     private let alreadyHaveAccountButton: UIButton = {
         let button = Utilities().attributedButton("Already have an account?", " Log In")
-        button.addTarget(self, action: #selector(handleShowLogin), for: .touchUpInside)
+        button.addTarget(nil, action: #selector(handleShowLogin), for: .touchUpInside)
         return button
     }()
     
@@ -95,7 +98,7 @@ class RegistrationController: UIViewController{
         imagePicker.allowsEditing = true
     }
     
-   
+    
     
     // MARK: - Selectors
     
@@ -108,10 +111,48 @@ class RegistrationController: UIViewController{
     }
     
     @objc func handleRegister(){
+        guard let profileImage = profileImage else {
+            print("Please select profile image!")
+            return
+        }
         guard let email = emailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
-        print("Email: \(email)")
-        print("Passowrd: \(password)")
+        guard let fullname = fullNameTextField.text else {return}
+        guard let username = usernameTextField.text else {return}
+        
+        
+        
+        guard let imageData = profileImage.jpegData(compressionQuality: 0.3) else {return}
+        let filename = NSUUID().uuidString
+        
+        let storageRef = STORAGE_PROFILE_IMAGES.child(filename)
+        
+        storageRef.putData(imageData) { metadata, error in
+            storageRef.downloadURL { url, error in
+                guard let profileImageUrl = url?.absoluteString else {return}
+                
+                Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                    if let error = error {
+                        print("Error: \(error.localizedDescription)")
+                    }
+                    
+                    guard let uid = authResult?.user.uid else {return}
+                    
+                    let values = ["email": email, "username": username, "fullname": fullname, "profileImageUrl": profileImageUrl]
+                    
+                    REF_USERS.child(uid).updateChildValues(values) { error, reference in
+                        if let error = error {
+                            print("error: \(error)")
+                        }
+                        print("Successfully update user information")
+                    }
+                }
+            }
+        }
+        
+        
+        
+        
     }
     
     // MARK: - Helpers
@@ -149,6 +190,7 @@ extension RegistrationController: UIImagePickerControllerDelegate, UINavigationC
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let profileImage = info[.editedImage] as? UIImage else {return}
+        self.profileImage = profileImage
         
         plusPhotoButton.layer.cornerRadius = 128 / 2
         plusPhotoButton.layer.masksToBounds = true

@@ -27,6 +27,7 @@
 		B477B28B29BB277200CC4CF5 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = B477B28A29BB277200CC4CF5 /* FirebaseDatabase */; };
 		B477B28D29BB277200CC4CF5 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B477B28C29BB277200CC4CF5 /* FirebaseStorage */; };
 		B477B28F29BB28C700CC4CF5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B477B28E29BB28C700CC4CF5 /* GoogleService-Info.plist */; };
+		B477B29129BF479B00CC4CF5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B477B29029BF479B00CC4CF5 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		B477B27F29BA047D00CC4CF5 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		B477B28529BB1AE100CC4CF5 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		B477B28E29BB28C700CC4CF5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B477B29029BF479B00CC4CF5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			children = (
 				B477B27429B885EA00CC4CF5 /* Extensions.swift */,
 				B477B27F29BA047D00CC4CF5 /* Utilities.swift */,
+				B477B29029BF479B00CC4CF5 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				B477B27029B0AD3A00CC4CF5 /* ConversationsController.swift in Sources */,
 				B477B26A29B0ACAE00CC4CF5 /* FeedController.swift in Sources */,
 				B477B26629B0AAFB00CC4CF5 /* MainTabController.swift in Sources */,
+				B477B29129BF479B00CC4CF5 /* Constants.swift in Sources */,
 				B477B26E29B0AD1D00CC4CF5 /* NotificationsController.swift in Sources */,
 				B477B24C29B0A9D200CC4CF5 /* SceneDelegate.swift in Sources */,
 				B477B26C29B0ACF100CC4CF5 /* ExploreController.swift in Sources */,
