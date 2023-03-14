@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Firebase
 
 class MainTabController: UITabBarController {
 
@@ -25,9 +26,10 @@ class MainTabController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        configureViewController()
-        configureUI()
+        view.backgroundColor = .twitterBlue
+        //logUserOut()
+        authenticateUserAndConfigureUI()
+
         
         let appearance = UITabBarAppearance()
         appearance.configureWithDefaultBackground()
@@ -37,6 +39,29 @@ class MainTabController: UITabBarController {
             tabBar.scrollEdgeAppearance = appearance
         } else {
             
+        }
+    }
+    
+    // MARK: - API
+    
+    func authenticateUserAndConfigureUI(){
+        if Auth.auth().currentUser == nil {
+            DispatchQueue.main.async {
+                let nav = UINavigationController(rootViewController: LoginController())
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true)
+            }
+        }else{
+            configureViewController()
+            configureUI()
+        }
+    }
+    
+    func logUserOut(){
+        do {
+            try Auth.auth().signOut()
+        } catch let error {
+            print("Error: \(error)")
         }
     }
     
@@ -50,6 +75,7 @@ class MainTabController: UITabBarController {
     // MARK: - Helpers
     
     func configureUI(){
+        view.backgroundColor = .white
         view.addSubview(actionButton)
         actionButton.translatesAutoresizingMaskIntoConstraints = false
         actionButton.snp.makeConstraints { make in
