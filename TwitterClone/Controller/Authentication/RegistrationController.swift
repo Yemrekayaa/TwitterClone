@@ -126,7 +126,13 @@ class RegistrationController: UIViewController{
             if let error = error {
                 print("error: \(error)")
             }
-            print("Successfully update user information")
+            guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow}) else {return}
+            
+            guard let tab = window.rootViewController as? MainTabController else {return}
+            
+            tab.authenticateUserAndConfigureUI()
+            
+            self.dismiss(animated: true)
         }
 
         

@@ -77,9 +77,16 @@ class LoginController: UIViewController {
         AuthService.shared.logUserIn(withEmail: email, password: password) { result, error in
             if let error = error {
                 print(error.localizedDescription)
-            }else{
-                print("loginSuccess")
+                return
             }
+            
+            guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow}) else {return}
+            
+            guard let tab = window.rootViewController as? MainTabController else {return}
+            
+            tab.authenticateUserAndConfigureUI()
+            
+            self.dismiss(animated: true)
         }
     }
     
