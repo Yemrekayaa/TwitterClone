@@ -13,6 +13,15 @@ class MainTabController: UITabBarController {
 
     // MARK: - Properties
     
+    var user: User? {
+        didSet{
+            print("MainTabController User: \(user?.username)")
+            guard let nav = viewControllers?[0] as? UINavigationController else {return}
+            guard let feed = nav.viewControllers.first as? FeedController else {return}
+            feed.user = user
+        }
+    }
+    
     let actionButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
@@ -29,7 +38,7 @@ class MainTabController: UITabBarController {
         view.backgroundColor = .twitterBlue
         //logUserOut()
         authenticateUserAndConfigureUI()
-
+        fetchUser()
         
         let appearance = UITabBarAppearance()
         appearance.configureWithDefaultBackground()
@@ -44,12 +53,21 @@ class MainTabController: UITabBarController {
     
     // MARK: - API
     
+    func fetchUser(){
+        UserService.shared.fetchUser { user in
+            self.user = user
+        }
+    }
+    
     func authenticateUserAndConfigureUI(){
         if Auth.auth().currentUser == nil {
             DispatchQueue.main.async {
+                
                 let nav = UINavigationController(rootViewController: LoginController())
                 nav.modalPresentationStyle = .fullScreen
+                
                 self.present(nav, animated: true)
+                
             }
         }else{
             configureViewController()

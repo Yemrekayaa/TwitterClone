@@ -30,6 +30,8 @@
 		B477B29129BF479B00CC4CF5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B477B29029BF479B00CC4CF5 /* Constants.swift */; };
 		B477B29329C0966900CC4CF5 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B477B29229C0966900CC4CF5 /* AuthService.swift */; };
 		B4F4198B29C1EEF70014FF78 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4198A29C1EEF70014FF78 /* UserService.swift */; };
+		B4F4198D29C20DE20014FF78 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4198C29C20DE20014FF78 /* User.swift */; };
+		B4F4199029C2FC000014FF78 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B4F4198F29C2FC000014FF78 /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,7 @@
 		B477B29029BF479B00CC4CF5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B477B29229C0966900CC4CF5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		B4F4198A29C1EEF70014FF78 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		B4F4198C29C20DE20014FF78 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +68,7 @@
 				B477B28D29BB277200CC4CF5 /* FirebaseStorage in Frameworks */,
 				B477B27329B8841200CC4CF5 /* SnapKit in Frameworks */,
 				B477B28929BB277200CC4CF5 /* FirebaseAuth in Frameworks */,
+				B4F4199029C2FC000014FF78 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +151,7 @@
 		B477B26329B0AA1B00CC4CF5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B4F4198C29C20DE20014FF78 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -191,6 +196,7 @@
 				B477B28829BB277200CC4CF5 /* FirebaseAuth */,
 				B477B28A29BB277200CC4CF5 /* FirebaseDatabase */,
 				B477B28C29BB277200CC4CF5 /* FirebaseStorage */,
+				B4F4198F29C2FC000014FF78 /* SDWebImage */,
 			);
 			productName = TwitterClone;
 			productReference = B477B24629B0A9D200CC4CF5 /* TwitterClone.app */;
@@ -223,6 +229,7 @@
 			packageReferences = (
 				B477B27129B8841200CC4CF5 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				B477B28729BB277200CC4CF5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B4F4198E29C2FC000014FF78 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = B477B24729B0A9D200CC4CF5 /* Products */;
 			projectDirPath = "";
@@ -256,6 +263,7 @@
 				B477B27529B885EA00CC4CF5 /* Extensions.swift in Sources */,
 				B477B28029BA047D00CC4CF5 /* Utilities.swift in Sources */,
 				B477B24A29B0A9D200CC4CF5 /* AppDelegate.swift in Sources */,
+				B4F4198D29C20DE20014FF78 /* User.swift in Sources */,
 				B477B27029B0AD3A00CC4CF5 /* ConversationsController.swift in Sources */,
 				B477B26A29B0ACAE00CC4CF5 /* FeedController.swift in Sources */,
 				B477B26629B0AAFB00CC4CF5 /* MainTabController.swift in Sources */,
@@ -514,6 +522,14 @@
 				version = 9.6.0;
 			};
 		};
+		B4F4198E29C2FC000014FF78 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = exactVersion;
+				version = 5.9.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -536,6 +552,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B477B28729BB277200CC4CF5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		B4F4198F29C2FC000014FF78 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B4F4198E29C2FC000014FF78 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
